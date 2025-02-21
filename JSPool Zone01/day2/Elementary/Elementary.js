@@ -8,8 +8,55 @@ function sameSign(num1, num2) {
 }
 
 function multiply(a, b) {
-   var result = 0
-   
+	var result = 0
+	var sign = 1
+
+	if (a == 0 || b == 0) {
+		return 0;
+	}
+	if (!sameSign(a, b)) {
+		sign = -1
+	}
+	a = Math.abs(a)
+	b = Math.abs(b)
+	for (;b > 0; b--) {
+		result += a	
+	}
+	return sign < 0 ? -result : result;
 }
 
-console.log(multiply(-90, 18))
+function divide(a, b) {
+	if (b === 0) {
+		return ;
+	}
+	var result = 0
+	var sign = 1
+
+	if (!sameSign(a, b)) {
+		sign = -1
+	}
+	a = Math.abs(a)
+	b = Math.abs(b)
+	while(a >= b) {
+		a -= b
+		result++
+	}
+	return result * sign;
+}
+
+function modulo(a, b) {
+	if (b === 0) {
+		return ;
+	}
+	sign = 1
+
+	if (!sameSign(a, b)) {
+		sign = -1
+	}
+	a = Math.abs(a)
+	b = Math.abs(b)
+	while(a >= b) {
+		a -= b
+	}
+	return a * sign;
+}
